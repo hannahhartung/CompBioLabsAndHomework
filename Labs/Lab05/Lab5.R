@@ -109,3 +109,45 @@ write.csv(x = myResults, file = "PredPreyResults.csv")
 
 
 ## Part 3
+#Set up
+totalGenerations <- 1000
+initPreyVec <- seq(from = 10, to = 100, by = 10)
+initPred <- 10		# initial predator abundance at time t = 1
+a <- 0.01 		# attack rate
+r <- 0.2 		# growth rate of prey
+m <- 0.05 		# mortality rate of predators
+k <- 0.1 		# conversion constant of prey into predators
+
+time <- seq(1, totalGenerations) #time vector will remain the same though treatments
+
+#Set up empty vector which is generation x abundance x set of results
+PredPrey <- array( ,c(totalGenerations, 3, length(initPreyVec))) #There must be a less "dirty" way to set an empty matrix of given dimensions
+for (s in 1:length(initPreyVec)) { #For each of the treatments (indicated by starting prey #)
+  #Reset vectors for each treatment
+  prey <- integer(totalGenerations) #prey abundance = n, vector currently full of zeros
+  predators <- integer(totalGenerations) #predators abundance = p
+  predators[1] <- initPred
+  prey[1] <- initPreyVec[s] #changes the initPrey
+  for ( i in 2:totalGenerations ) {
+    prey[i] <- prey[i-1] + (r * prey[i-1]) - (a * prey[i-1] * predators[i-1])
+    predators[i] <- predators[i-1] + (k * a * prey[i-1] * predators[i-1]) - (m * predators[i-1])
+    if ( prey[i] < 0 ) { prey[i] <- 0 }
+  } 
+  PredPrey[,1,s] <- time #same between loops
+  PredPrey[,2,s] <- prey
+  PredPrey[,3,s] <- predators
+}
+
+#Data frames cannot be 3D nor can a matrix house column titles. I chose to put my data in the matrix.
+
+# In order to find the data you are interested in please folloe these guide lines
+#Data is in a 3D matrix. 
+#The first index in the matrix [#,,] corresponds to the generational time step from 1 to 1000
+#The second index [,#,] refers to the data of interest
+            #Where 1 indicates the generation value
+            #Where 2 indicates the prey abundance at that time
+            #And 3 indicated predator abundance at that time
+#The third index [,,#] refers to the treament
+      #Treatments are based on starting prey numbers
+      #10 times the index value is the starting prey number
+      #For example [,,7] is the 2D matrix describing the system when initial prey number is 70
