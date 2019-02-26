@@ -139,7 +139,7 @@ for (s in 1:length(initPreyVec)) { #For each of the treatments (indicated by sta
 }
 
 #Data frames cannot be 3D nor can a matrix house column titles. I chose to put my data in the matrix.
-
+#
 # In order to find the data you are interested in please folloe these guide lines
 #Data is in a 3D matrix. 
 #The first index in the matrix [#,,] corresponds to the generational time step from 1 to 1000
