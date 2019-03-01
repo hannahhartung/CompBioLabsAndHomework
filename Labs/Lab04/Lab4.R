@@ -17,7 +17,7 @@ times <- seq(1:8) #weeks
 
 for( week in times ) {
   new_money <- tim_money + allowance - numbergum * pricegum
-  print(c("After week", week, "Tim has $", new_money))
+  print(paste("After week", week, "Tim has $", new_money))
   tim_money <- new_money #Set the amount he has at the start of next week
 }
 
@@ -29,7 +29,7 @@ times <- seq(7)
 
 for( years in times ){
   new_pop <- trunc( current_pop * (1 - lossrate) ) #Trunc just for me: round to single individuals
-  print(c(years,new_pop,"animals remaining"))
+  print(paste(years,new_pop,"animals remaining"))
   current_pop <- new_pop #Set new population
 }
 
@@ -126,7 +126,7 @@ CO2 <- read.csv('CO2_data_cut_paste.csv', colClasses=c('integer','numeric','nume
 
 #8. c) Percentage change year to year
 #There are 263 years (found by looking at Data description)
-percents <- array(dim=c(263,8)) #empty array
+percents <- array(dim=dim(CO2)) #empty array
 
 for (i in 2:263) {
   for (j in 2:8) { #The number of categories other than years
@@ -136,7 +136,7 @@ for (i in 2:263) {
 }
 
 #Set years
-years_for_percent = 1751:2013 #From given
+years_for_percent = min(CO2[,1]):max(CO2[,1]) #From given
 
 #Build  a data frame so I can add appropriate titles
 percent_change <- data.frame("Year" = years_for_percent,
