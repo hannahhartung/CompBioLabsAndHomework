@@ -1,4 +1,4 @@
-﻿## Logistic Growth Model
+## Logistic Growth Model
 
 The discrete-time logistic growth model is used to predict population growth. It takes into account the initial population size, the intrinsic growth rate, and the carrying capacity of the system. This model is run over a discrete number of time steps (non-continuous). It is typically represented by the following equation:  
 `n[t] = n[t-1] + (r * n[t-1] * (K - n[t-1]) / K)`   
@@ -10,7 +10,8 @@ The code in Lab8 runs a logistic growth model using a function. The only require
 To illustrate the viability of this code, I ran it for a system with the following inputs:  
 `n[0]=200`  
 `r=0.9,  K = 6000`
-Yielding the results file in this repository named LogisticGrowthResults.csv. That file describes the system shown below:
+Yielding the results file in this repository named LogisticGrowthResults.csv. That file describes the system shown below:     
+
 ![Logistic Growth Example](https://github.com/hannahhartung/CompBioLabsAndHomework/blob/master/Labs/Lab08/Growth_Model.png)
 
 
