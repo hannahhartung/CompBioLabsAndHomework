@@ -95,4 +95,16 @@ lowest8 <- (FamilyWoodDensity %>% arrange(WoodDensity_gcm3) %>% head(Family,n=8)
 ### Part 3
 library(ggplot2)
 
-## 7. 
+## 7.
+highest8 <- as.matrix(highest8)
+lowest8 <- as.matrix(lowest8)
+
+
+for ( i in seq(1, dim(highest8)[1])){
+  FamDensity <- as.data.frame(WoodDensity %>% filter(Family == highest8[i]))
+  boxplot( FamDensity$Wood.density..g.cm.3...oven.dry.mass.fresh.volume )
+}
+
+
+WoodDensity %>% filter(Family == 'Acanthaceae')
+
