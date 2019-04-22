@@ -1,4 +1,4 @@
-﻿## Breeding Across Isolated Populations of Skyros Lizards
+## Breeding Across Isolated Populations of Skyros Lizards
 
 ### Introduction
 Skyros is a large island of the coast of Greece, surrounded by several other small islands. This system acts as a miniturized model for the Island Speciation theory. This realm of biology seeks to answer questions about how genetic drift between isolated populations can promote speciation. The Skyros lizards are distributed across the main island ("mainland") and across many smaller nearby islands ("islets"). I intend to use existing data on the breeding of mainland and islet lizards (Runemark & Svensson 2012, and others) to understand how the geographic separation of these populations affect the behavioral, morphological and even pheromonal compatibility across this distance gradient. This analysis will help inform our understanding of speciation. 
@@ -19,10 +19,15 @@ My first step will be to determine a compatibility factor based on successful co
 
 ### References
 Runemark A, Svensson EI (2012) Sexual selection as a promoter of population divergence in male phenotypic characters? A study on mainland and islet lizard populations. Biological Journal of the Linnean Society 106(2): 374-389. [https://doi.org/10.1111/j.1095-8312.2012.01866.x](https://doi.org/10.1111/j.1095-8312.2012.01866.x)
+
 Runemark A, Svensson EI (2012) Data from: Sexual selection as a promoter of population divergence in male phenotypic characters? A study on mainland and islet lizard populations. Dryad Digital Repository. [https://doi.org/10.5061/dryad.m1fp77jg](https://doi.org/10.5061/dryad.m1fp77jg)
+
 Runemark A, Gabirot M, Svensson EI (2011) Population divergence in chemical signals and the potential for premating isolation between islet- and mainland populations of the Skyros wall lizard (Podarcis gaigeae). Journal of Evolutionary Biology 24(4): 795–809. [https://doi.org/10.1111/j.1420-9101.2010.02214.x](https://doi.org/10.1111/j.1420-9101.2010.02214.x)
+
 Runemark A, Gabirot M, Svensson EI (2011) Data from: Population divergence in chemical signals and the potential for premating isolation between islet- and mainland populations of the Skyros wall lizard, (Podarcis gaigeae). Dryad Digital Repository. [https://doi.org/10.5061/dryad.8265](https://doi.org/10.5061/dryad.8265)
+
 Runemark A, Sagonas K, Svensson EI (2015) Ecological explanations to island gigantism: dietary niche divergence, predation and size in an endemic lizard. Ecology 96: 2077-2092. [https://doi.org/10.1890/14-1996.1](https://doi.org/10.1890/14-1996.1)
+
 Runemark A, Sagonas K, Svensson EI (2015) Data from: Ecological explanations to island gigantism: dietary niche divergence, predation and size in an endemic lizard. Dryad Digital Repository. [https://doi.org/10.5061/dryad.kb874](https://doi.org/10.5061/dryad.kb874)
 
 
