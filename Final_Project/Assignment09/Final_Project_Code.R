@@ -96,7 +96,9 @@ ggplot(mateRatio, aes(distance,compatibility)) +
   #Setting geom_smooth to lm creates a line with the same coefficients from lm above
   #The grey area are 95% confidence intervals
   geom_smooth(method = 'lm',color='seagreen3', fill= 'seagreen3') +
-  theme_minimal()
+  theme_minimal() + 
+  scale_x_continuous(name="Distance (km)") +
+  scale_y_continuous(name="Ratio of Breeding Success to Failure")
 
 
 
@@ -174,7 +176,9 @@ ggplot(LicksDistance, aes(distance,interest)) +
   geom_hline(yintercept=0, color = 'black') +
   #The standard error of the control mean
   geom_ribbon(aes(ymin=-2*ControlStderr, ymax=2*ControlStderr), alpha=0.2) +  #2 times standard error is approximately 95% cofidence interval
-  geom_smooth(method = 'lm',color='sienna3', fill= 'sienna2') #Create a linear fit line 
+  geom_smooth(method = 'lm',color='sienna3', fill= 'sienna2') + #Create a linear fit line 
+  scale_x_continuous(name="Distance (km)") +
+  scale_y_continuous(name="Number of Pheromone Licks")
 
 
 #Calculate actual values for linear model
@@ -187,8 +191,10 @@ summary(lm_fit2)
 sum(lickgender == donorgender)
 #No
 
+#Create a data frame indicating gender
 LicksDistanceGendered <- data.frame(distance = distances2, interest = licks, Gender = lickgender) 
 
+#Linear model fits
 lm_fitfemale <- lm(LicksDistanceGendered$interest[LicksDistanceGendered$gender == 'Female'] ~ LicksDistance$distance[LicksDistanceGendered$gender == 'Female'])
 summary(lm_fitfemale)
 
@@ -202,9 +208,3 @@ ggplot(LicksDistanceGendered, aes(distance,interest, color=Gender)) +
   geom_smooth(method = lm, aes(color=Gender, fill=Gender)) + theme_minimal() + 
   scale_x_continuous(name="Distance (km)") +
   scale_y_continuous(name="Number of Pheromone Licks")
-  
-  #Plot the female/male line to check 
-  #geom_abline(intercept = 45.9645, slope = -3.3838, color = 'salmon') +
-  #geom_abline(intercept = 90.335, slope = -1.804, color = 'turquoise')
-
-
