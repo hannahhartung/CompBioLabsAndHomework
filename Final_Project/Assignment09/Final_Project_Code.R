@@ -14,6 +14,7 @@ library(ggplot2)
 
 
 
+
 ################ Mating Data ################
 MateData <- read.csv("Runemark_and_Svensson_MatingData.csv", stringsAsFactors = F)
 
@@ -66,7 +67,7 @@ for (i in seq(1:dim(MateData)[1])) {
 #Plot distances versus ratios to get a sense for the information
 #Turn vectors into a single dataframe
 mateRatio <- data.frame(distance = distances, compatibility = mateRatio)
-ggplot(mateRatio) + geom_point(aes(mateRatio$distance,mateRatio$compatibility))
+ggplot(mateRatio) + geom_point(aes(distance,compatibility))
 
 #Set up land distance versus sea distance
 distancesLand <- c()
@@ -91,10 +92,12 @@ summary(lm_fit)
 
 #Plot the points along with a regression line
 ggplot(mateRatio, aes(distance,compatibility)) + 
-  geom_point(color='blue') +
+  geom_point(color='seagreen1') +
   #Setting geom_smooth to lm creates a line with the same coefficients from lm above
   #The grey area are 95% confidence intervals
-  geom_smooth(method = 'lm',color='red')
+  geom_smooth(method = 'lm',color='seagreen3', fill= 'seagreen3') +
+  theme_minimal()
+
 
 
 
@@ -157,8 +160,8 @@ for (i in seq(1:dim(PheromoneData)[1])) {
   distances2 <- c(distances2, DistanceData[[c(PheromoneData$Population.of.origin.of.smell.donor[i]),sub(" ", ".",c(PheromoneData$Population.of.origin.of.tongue.flicker[i]))]])
   #All in the loop to remove the control lick studies
   licks <- c(licks, PheromoneData$Number.of.tongue.flicks.10min[i])
-  lickgender <- c(lickgender, PheromoneData$Sex.of.tongue.flicker)
-  donorgender <- c(donorgender, PheromoneData$Sex.of.smell.donor)
+  lickgender <- c(lickgender, PheromoneData$Sex.of.tongue.flicker[i])
+  donorgender <- c(donorgender, PheromoneData$Sex.of.smell.donor[i])
 }
 #Correct for control
 licks <- licks - ControlConst
@@ -166,12 +169,12 @@ licks <- licks - ControlConst
 LicksDistance <- data.frame(distance = distances2, interest = licks) #Licks indicate sexual interest
 
 ggplot(LicksDistance, aes(distance,interest)) + 
-  geom_point(color='blue') +
+  geom_point(color='sienna1') +
   #The control
   geom_hline(yintercept=0, color = 'black') +
   #The standard error of the control mean
-  geom_ribbon(aes(ymin=-ControlStderr, ymax=ControlStderr), alpha=0.2) + 
-  geom_smooth(method = 'lm',color='red') #Create a linear fit line 
+  geom_ribbon(aes(ymin=-2*ControlStderr, ymax=2*ControlStderr), alpha=0.2) +  #2 times standard error is approximately 95% cofidence interval
+  geom_smooth(method = 'lm',color='sienna3', fill= 'sienna2') #Create a linear fit line 
 
 
 #Calculate actual values for linear model
@@ -184,7 +187,7 @@ summary(lm_fit2)
 sum(lickgender == donorgender)
 #No
 
-LicksDistanceGendered <- data.frame(distance = distances2, interest = licks, gender = lickgender) 
+LicksDistanceGendered <- data.frame(distance = distances2, interest = licks, Gender = lickgender) 
 
 lm_fitfemale <- lm(LicksDistanceGendered$interest[LicksDistanceGendered$gender == 'Female'] ~ LicksDistance$distance[LicksDistanceGendered$gender == 'Female'])
 summary(lm_fitfemale)
@@ -192,24 +195,16 @@ summary(lm_fitfemale)
 lm_fitmale <- lm(LicksDistanceGendered$interest[LicksDistanceGendered$gender == 'Male'] ~ LicksDistance$distance[LicksDistanceGendered$gender == 'Male'])
 summary(lm_fitmale)
 
-ggplot(LicksDistanceGendered, aes(distance,interest, color=gender)) + 
+ggplot(LicksDistanceGendered, aes(distance,interest, color=Gender)) + 
   geom_point() +
   geom_hline(yintercept=0, color = 'black') +
-  geom_ribbon(aes(ymin=-ControlStderr, ymax=ControlStderr), alpha=0.2, color=NA) +
-  geom_smooth(method = 'lm', aes(fill=gender)) +
-  #Create the linear fit line 
+  geom_ribbon(aes(ymin=-2*ControlStderr, ymax=2*ControlStderr), alpha=0.2, color=NA) + #2 times standard error is approximately 95% cofidence interval
+  geom_smooth(method = lm, aes(color=Gender, fill=Gender)) + theme_minimal() + 
+  scale_x_continuous(name="Distance (km)") +
+  scale_y_continuous(name="Number of Pheromone Licks")
+  
   #Plot the female/male line to check 
-  geom_abline(intercept = 66.281, slope = -4.602, color = 'salmon') +
-  geom_abline(intercept = 72.31, slope = -1.23, color = 'cyan') +
-  ylim(20, 90)
+  #geom_abline(intercept = 45.9645, slope = -3.3838, color = 'salmon') +
+  #geom_abline(intercept = 90.335, slope = -1.804, color = 'turquoise')
 
 
-a <- c('A','B','A','A','A','B','B')
-b <- c(1,9,2,3,4,10,13)
-x <- c(-1,1,2,3,4,2,3)
-testA <- data.frame(x = x, b = b, a = a)
-ggplot(testA, aes(x,b, color=a)) + 
-  geom_point() +
-  geom_hline(yintercept=0, color = 'black') +
-  geom_ribbon(aes(ymin=-ControlStderr, ymax=ControlStderr), alpha=0.2, color= NA) +
-  geom_smooth(method = 'lm')
