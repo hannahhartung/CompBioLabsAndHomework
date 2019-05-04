@@ -88,10 +88,12 @@ I found a clear linear trend describing that breeding success likelihood decreas
 ![](https://github.com/hannahhartung/CompBioLabsAndHomework/blob/master/Final_Project/Assignment09/BreedingCompatibility.png)
 
 I also found that pre-mating isolation potential increases with distance. Females showed a decrease of 3.4 licks per km of distance while male interest seemed to be unaffected by site distance. Sexual interest was indicated by how often a pheromone sample was licked by a member of the opposite sex (Females: p = 0.00011). Values are corrected against an ungendered control (black line). Shaded regions represents 95% confidence intervals in linear model. The black line represents the ungendered control value and its standard deviation which the values for each gender were normalized against.
-
+![](https://github.com/hannahhartung/CompBioLabsAndHomework/blob/master/Final_Project/Assignment09/LickGraph.png)
   
 #### Future Directions
-I will continue working with the slopes of these linear models to create an interactive graph which can help teach speciation in classes. 
+I will continue working with the slopes of these linear models to create an interactive graph which can help teach speciation in classes. This is a sample of what the model will look like. Using data from the NOAA Bathymetric Data Viewer to calculate current sea depth between islands and data on the Aegean Sea rise (Lambeck 1996, 588-609) to approximate the time to geographic isolation for species. I will also incorporate data on island size as that affects the potential for genetic drift.
+
+![](https://github.com/hannahhartung/CompBioLabsAndHomework/blob/master/Final_Project/Assignment09/ExampleModel.png)
 
 ## References
 
@@ -143,9 +145,10 @@ Runemark, Anna, and Erik I. Svensson. 2012. “Sexual selection as a promoter of
 
 ## Appendix
 
-  
+  My poster on these results:
+  [https://github.com/hannahhartung/CompBioLabsAndHomework/blob/master/Final_Project/Assignment09/LIZARD_POSTER.pdf](https://github.com/hannahhartung/CompBioLabsAndHomework/blob/master/Final_Project/Assignment09/LIZARD_POSTER.pdf)
 
 Extra figure: Ungendered linear regression for the pheromonal experiment. The p value was 0.0028, meaning all of the regression calculated in the gendered analysis is from the females. This concurs with the results seen in the gendered graph.
+![](https://github.com/hannahhartung/CompBioLabsAndHomework/blob/master/Final_Project/Assignment09/UngenderedLickGraph.png)
 
-My poster on these results:
 
